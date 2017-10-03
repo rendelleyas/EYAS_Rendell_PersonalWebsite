@@ -3,70 +3,123 @@
 <head>
 	<title>Personal Website </title>
 	<style>
-	body{
-		background-image: url("images/usep.png");
-		
-	}
-	header{
-		weigth: 500px;
-	}
-	p{
-		padding: 30px;
-		font-size: 40px;
-		weigth: 500px;
-	}
-	body{
-		overflow: auto;
-		margin: 0;
-		background-image: url("images/background.jpg");
-		background-size: cover;
-	}
-	header {
-		weigth: 500px;
-	}
+        #container{
+            border: 3px solid #27515C;
+            height:450px;
+            width: 650px;
+            margin: 20px auto;
+            position: relative;
+        }
+        #img{
+            height:450px;
+            width: 650px;
+            position: absolute;
+        }
+        #left_holder{
+            height:450px;
+            width: 100px;
+            position: absolute;
+            left: 0px;
+            top:0px;
+        }
+        #right_holder{
+            height:450px;
+            width: 100px;
+            position: absolute;
+            right: 0px;
+            top:0px;
+        }
+        .left{
+            height: 50px;
+            width: 50px;
+            position: absolute;
+            top:40%;
+            left:0;
+        }
+        .right{
+            height: 50px;
+            width: 50px;
+            position: absolute;
+            top:40%;
+            right: 0;
+        }
+		body{
+			overflow: auto;
+			margin: 0;
+			background-image: url("images/background.jpg");
+			background-size: cover;
+		}
+		p{	
+			padding: 25px;
+			font-size: 40px;
+		}
+		#nav{
+			width: 100%;
+			background:#000033;
+			height: 100px;
+			margin-top: 5px;
+			
+		}
+		ul{
+			list-style: none;
+			padding:0;
+			margin:0;
+			position: absolute;
+		}
+		li{
+			float:left;
+			margin-top:30px;
+			
+		}
+		a{
+			font-family: courier new;
+			width: 150px;
+			color: white;
+			display:block;
+			text-decoration: none;
+			font-size:20px;
+			text-align: center;
+			padding:10px;
+			border-radius: 20px;
+		}
+		a:hover{
+			background: #7FB3D5;
+			transition:0.6s;
+			
+		}
+    </style>
+    <script>
+            var imagecount =1;
+            var total = 6;
+        
+            function slider(x){
+                var Image = document.getElementById('img');
+                imagecount = imagecount + x;
+                if(imagecount > total){
+                    imagecount =1;
+                }else if (imagecount < 1){
+                    imagecount = total;
+                }
+                Image.src = "memo/img" + imagecount + ".jpg";
+            }
+        
+            window.setInterval(function slideA(){
+                var Image = document.getElementById('img');
+                imagecount = imagecount + 1;
+                if(imagecount > total){
+                    imagecount =1;
+                }else if (imagecount < 1){
+                    imagecount = total;
+                }
+                Image.src = "memo/img" + imagecount + ".jpg";
+            },5000);
+        
+        </script>
 	
-	#nav{
-		width: 100%;
-		background:#000033;
-		height: 100px;
-		margin-top: 5px;
-		
-	}
-	ul{
-		list-style: none;
-		padding:0;
-		margin:0;
-		position: absolute;
-	}
-	li{
-		float:left;
-		margin-top:30px;
-		
-	}
-	a{
-		font-family: courier new;
-		width: 150px;
-		color: white;
-		display:block;
-		text-decoration: none;
-		font-size:20px;
-		text-align: center;
-		padding:10px;
-		border-radius: 20px;
-		font-weigth: bold;
-	}
-	a:hover{
-		background: #7FB3D5;
-		trasition:0.6s;
-		
-	}
-	
-	</style>
-
-
 </head>
-<body>
-	<div id = "header"> <img src= "images/logo.png" alt = "Rendell Jay S. Eyas " height = "100" width= "850"/> </div> 
+<body onLoad="slideA()">
+
+	<img src= "images/logo.png" alt = "Rendell Jay S. Eyas " height = "100" width= "850"/> 
 	<div id = "nav"> 
 	<ul>
 		<li><a href = "Myweb.html">Home </a></li>
@@ -76,8 +129,16 @@
 		<li><a href = "advantage.html"> Advantages </a> </li>
 	</ul>
 	</div>
-	<p> <b> Hi ! My name is Rendell. This is my First page as a student. All you can see here is about me :D </p>
-	<p> Just click the button's above for you to know about me :) Thank you ^^  </b> </p>
+    <p> <b>  Hi ! My name is Rendell. This is my First page as a student. All you can see here is about me :D </br>
+        Just click the button's above for you to know about me :) Thank you ^^ </p>
+        <div id = "container">
+                <img src="memo/img1.jpg" id = "img"/>
+                <div id =  "left_holder"><img onClick="slider(-1)" class = "left " src= "memo/left.png"/></div>
+                <div id = "right_holder"><img onClick="slider(1)" class = "right" src= "memo/right.png"/></div>
+            </div>
+                
+	
+	
 
 </body>
 </html>
